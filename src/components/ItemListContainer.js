@@ -1,7 +1,11 @@
+import ItemCount from '../components/ItemCount';
 
-const ItemListContainer = ({saludo}) =>{
+
+const ItemListContainer = () =>{
     return(
-        <main>{saludo}</main>
+        <main>
+            <ItemCount/>
+        </main>
     );
 }
 

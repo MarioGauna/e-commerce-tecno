@@ -7,7 +7,7 @@ function App() {
   return (
     <react.Fragment>
       <NavBar/>
-      <ItemListContainer saludo="Bienvenidos a mi tienda"/>
+      <ItemListContainer/>
     </react.Fragment>
   );
 }

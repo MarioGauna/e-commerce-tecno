@@ -46,3 +46,14 @@
   background-color: transparent !important;
   border: 0 !important;
 }
+
+.quantity{
+  border: none;
+  background-color: transparent;
+  margin: 20px;
+}
+
+.central{
+  display: flex;
+  align-items: center;
+}
