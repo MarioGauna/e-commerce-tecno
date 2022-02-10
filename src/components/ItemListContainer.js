@@ -1,10 +1,10 @@
-import ItemCount from '../components/ItemCount';
+import ItemList from '../components/ItemList';
 
 
 const ItemListContainer = () =>{
     return(
         <main>
-            <ItemCount/>
+            <ItemList/>
         </main>
     );
 }
