@@ -57,3 +57,25 @@
   display: flex;
   align-items: center;
 }
+
+.card{
+  width: 18rem;
+}
+
+.contenedor{
+  display: flex;
+  
+}
+
+.detalle{
+  background-color: rgb(127, 150, 255) !important;
+}
+
+.card-img-top{
+  width: 300px;
+  height: 300px;
+}
+
+.card{
+  margin: 50px auto;
+}
