@@ -1,10 +1,10 @@
 let is_ok =true;
 
-export const customFetch=(products, timeout)=>{
+export const customFetch=(data, timeout)=>{
     return new Promise((resolve,reject)=>{
         setTimeout(()=>{
             if(is_ok){
-                resolve(products)
+                resolve(data)
             }else{
                 reject("ERROR")
             }

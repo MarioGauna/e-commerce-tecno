@@ -79,3 +79,8 @@
 .card{
   margin: 50px auto;
 }
+
+.detalle2{
+  list-style-type: none;
+  padding: 0;
+}

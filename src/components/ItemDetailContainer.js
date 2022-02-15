@@ -8,26 +8,19 @@ const ItemDetailContainer = () =>{
     const [dato,setDato] = useState({});
 
     useEffect(()=>{
-        customFetch(2000,data[1])
-        .then(result=>setDato(result))
+        customFetch(data[2],2000)
+        .then(dato=>setDato(dato))
         .catch(error=>console.log(error))
     }, []);
 
     return (
-        <div className='contenedor'>
-            {dato.map((item)=>{
-                return(
-                    <ItemDetail key={item.id}
-                                img={item.img}
-                                name={item.name}
-                                stock={item.stock}
-                                cost={item.cost}
-                                description={item.description}
+        <ItemDetail key={dato.id}
+                    image={dato.image}
+                    name={dato.name}
+                    stock={dato.stock}
+                    cost={dato.cost}
+                    description={dato.description}
                     />
-                )
-            })}
-        </div>
-        
     );
 }
 
