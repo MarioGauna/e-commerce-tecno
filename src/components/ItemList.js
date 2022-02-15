@@ -43,7 +43,7 @@ const customFetch = (products, timeout) => {
 }
 
 const ItemList =()=> { 
-    customFetch(products, 2000)
+    customFetch(2000,products)
     .then((products) => console.log("ANDA", products))
     .catch((error) => console.log("NO ANDA", error)); 
     
