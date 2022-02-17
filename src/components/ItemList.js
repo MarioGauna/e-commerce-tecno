@@ -1,15 +1,19 @@
 import React from "react";
 import Item from '../components/Item.js';
 
-const ItemList =(dato)=> {
-    
-    console.log({dato});
-    return (<div className="container lista">{dato.map(item => <Item
-                                            key={item.id} 
-                                            item={item}
-                                            />
-    )}
-    </div>)
+const ItemList = ({item})=> {
+
+    return (
+        <div className="container lista">
+            {
+                item
+                ?
+                item.map(elem => <Item key={elem.id} item={elem}/>)
+                :
+                <p>Cargando...</p>
+            }
+        </div>
+        )
 }
 
-export default ItemList
+export default ItemList;

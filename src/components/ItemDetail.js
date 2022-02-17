@@ -2,21 +2,22 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemCount from "./ItemCount";
 
-function ItemDetail(dato){
+function ItemDetail({item}){
+  
   return(
-    <div class="container">
-      <h1 class="my-4">{dato.name}</h1>
-      <div class="row">
-        <div class="col-md-8">
-          <img class="img-fluid" src={dato.image} alt=""></img>
+    <div className="container">
+      <h1 className="my-4">{item.name}</h1>
+      <div className="row">
+        <div className="col-md-8">
+          <img className="img-fluid deta" src={item.image} alt=""></img>
         </div>
-        <div class="col-md-4">
-          <p>{dato.description}</p>
-          <h3 class="my-3">Detalle</h3>
-          <ul className="detalle2">
-            <li>Stock: {dato.stock}</li>
-            <li>Precio: {dato.price}</li>
-          </ul>
+        <div className="col-md-4">
+        <h3 className="my-3">Detalle</h3>
+          <p>{item.description}</p>
+            <ul className="detalle2">
+              <li>Stock: {item.stock}</li>
+              <li>Precio: $ {item.price}</li>
+            </ul>
           <ItemCount/>
         </div>
       </div>

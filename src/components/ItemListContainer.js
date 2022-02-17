@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from '../components/ItemList';
-
-const{data}=require('../utilidades/data.js');
+import data from '../utilidades/data'
 
 let api = true;
 
@@ -22,29 +21,22 @@ const ItemListContainer = () =>{
     
     const [dato,setDato] = useState([]);
     const {idcategory}= useParams();
-    
-    console.log(idcategory);
 
     useEffect(()=>{
         if(idcategory === undefined){
-        customFetch(1000, data)
-            .then(dato=>setDato(dato))
+        customFetch(data, 1000)
+            .then(res=>setDato(res))
             .catch(error=>console.log(error))
         }else{
             customFetch(data.filter(item => item.categoryId === parseInt(idcategory)),1000)
-                .then(dato=>setDato(dato))
+                .then(res=>setDato(res))
                 .catch(error=>console.log(error))
         }
         
     }, [idcategory]);
     
     return(
-        console.log(dato),
-        <>
-            <ItemList 
-                    key={dato.id}
-                    item={dato}/>
-        </>
+        <ItemList item={dato}/>
     );
 }
 

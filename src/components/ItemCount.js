@@ -2,7 +2,6 @@ import { useState } from "react";
 import Image1 from "../image/minus.png";
 import Image2 from "../image/plus.png";
 
-
 const ItemCount = () =>{
 
     const[valor, setValor]= useState(1);
@@ -29,9 +28,9 @@ const ItemCount = () =>{
     return(
         <main className="central">
             <button onClick={quitar} className="quantity"><img src={Image1} alt="Imagen no encontrada"></img></button>
-            <p>{valor}</p>
+            <p className="digito">{valor}</p>
             <button onClick={agregar} className="quantity"><img src={Image2} alt="Imagen no encontrada"></img></button>
-            <button onClick={mostrar}>Comprar</button>
+            <button onClick={mostrar} type="button" className="btn btn-primary detalle">Agrega al carrito</button>
         </main>
     );
 }

@@ -89,3 +89,25 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.deta{
+  width: 800px !important;
+  height:700px !important;
+  object-fit: scale-down !important; 
+}
+
+.itemDeta{
+  object-fit: scale-down !important; 
+}
+
+.digito{
+  margin: 0;
+}
+
+.page-wrap {
+  min-height: 100vh;
+}
+
+/* .lower{
+  
+} */

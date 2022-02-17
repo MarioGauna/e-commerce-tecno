@@ -2,10 +2,12 @@ import './App.css';
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
+import NotFound from './components/NotFound';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 function App() {
+  
   return (
     <BrowserRouter>
         <NavBar/>
@@ -13,7 +15,7 @@ function App() {
         <Route path="/" element={<ItemListContainer/>}></Route>
         <Route path="/item/:iditem" element={<ItemDetailContainer/>}></Route>
         <Route path="/category/:idcategory" element={<ItemListContainer/>}></Route>
-        <Route path="/ofertas" element={<ItemListContainer/>}></Route>
+        <Route path="*" element={<NotFound/>}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -2,33 +2,38 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from '../components/ItemDetail';
 import { customFetch } from '../utilidades/customFetch';
-
-const{data}=require('../utilidades/data.js');
+import data from '../utilidades/data'
 
 const ItemDetailContainer = () =>{
+
     const [dato,setDato] = useState([]);
     const {iditem}= useParams();
-    
-    console.log(iditem);
 
     useEffect(()=>{
+        
         if(iditem === undefined){
-        customFetch(1000, data)
-            .then(dato=>setDato(dato))
+        customFetch(data, 1000)
+            .then(res=>setDato(res))
             .catch(error=>console.log(error))
         }else{
-            customFetch(1000, data.filter(item => item.id === parseInt(iditem)))
-                .then(dato=>setDato(dato))
+            customFetch(data.filter(item => item.id === parseInt(iditem)), 1000)
+                .then(res=>setDato(res[0]))
                 .catch(error=>console.log(error))
         }
         
     }, [iditem]);
 
     return (
-        <ItemDetail key={dato.id}
-                    item={dato}
-                    />
-    );
+        <>
+        {
+            setDato
+            ?
+            <ItemDetail item={dato} />
+            :
+            <p>Cargando...</p>
+        }
+        </>
+    )
 }
 
 export default ItemDetailContainer;
