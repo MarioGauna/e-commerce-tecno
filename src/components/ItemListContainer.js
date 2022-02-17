@@ -31,7 +31,7 @@ const ItemListContainer = () =>{
             .then(dato=>setDato(dato))
             .catch(error=>console.log(error))
         }else{
-            customFetch(data.filter(item => item.id === parseInt(idcategory)),1000)
+            customFetch(data.filter(item => item.categoryId === parseInt(idcategory)),1000)
                 .then(dato=>setDato(dato))
                 .catch(error=>console.log(error))
         }
@@ -41,7 +41,9 @@ const ItemListContainer = () =>{
     return(
         console.log(dato),
         <>
-            <ItemList item={dato}/>
+            <ItemList 
+                    key={dato.id}
+                    item={dato}/>
         </>
     );
 }
