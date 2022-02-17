@@ -13,11 +13,11 @@ const ItemDetailContainer = () =>{
 
     useEffect(()=>{
         if(iditem === undefined){
-        customFetch(data,500)
+        customFetch(1000, data)
             .then(dato=>setDato(dato))
             .catch(error=>console.log(error))
         }else{
-            customFetch(data.filter(item => item.id === parseInt(iditem)),1000)
+            customFetch(1000, data.filter(item => item.id === parseInt(iditem)))
                 .then(dato=>setDato(dato))
                 .catch(error=>console.log(error))
         }

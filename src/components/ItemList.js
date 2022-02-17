@@ -28,11 +28,11 @@ const ItemList =()=> {
 
     useEffect(()=>{
         if(idcategory === undefined){
-        customFetch(data,500)
+        customFetch(1000, data)
             .then(dato=>setDato(dato))
             .catch(error=>console.log(error))
         }else{
-            customFetch(1000, data.filter(item => item.id === parseInt(idcategory)))
+            customFetch(data.filter(item => item.id === parseInt(idcategory)),1000)
                 .then(dato=>setDato(dato))
                 .catch(error=>console.log(error))
         }
