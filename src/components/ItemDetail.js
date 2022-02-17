@@ -15,7 +15,7 @@ function ItemDetail(dato){
           <h3 class="my-3">Detalle</h3>
           <ul className="detalle2">
             <li>Stock: {dato.stock}</li>
-            <li>Precio: {dato.cost}</li>
+            <li>Precio: {dato.price}</li>
           </ul>
           <ItemCount/>
         </div>

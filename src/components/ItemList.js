@@ -1,40 +1,17 @@
 import React from "react";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Item from '../components/Item.js';
-import imagen1 from '../image/imagen1.jpg';
-import imagen2 from '../image/imagen2.jpg';
-import imagen3 from '../image/imagen3.jpeg';
+
+const{data}=require('../utilidades/data.js');
 
 let api = true;
 
-const products = [
-    {
-        id: 30,
-        img: imagen1,
-        name: "Agua Con Gas 1,5 lts",
-        stock: 86,
-        cost: 45,
-    },
-    {
-        id: 29,
-        img: imagen2,
-        name: "Agua Sin Gas 1,5 lts",
-        stock: 100,
-        cost: 140,
-    },
-    {
-        id: 76,
-        img: imagen3,
-        name: "Alambrado Chardonnay 750 ml",
-        stock: 92,
-        cost: 575,
-    }
-]
-
-const customFetch = (products, timeout) => {
+const customFetch = (data, timeout) => {
     return new Promise((resolve, reject) =>{
         setTimeout(() => {
             if (api) {
-                resolve(products);
+                resolve(data);
             } else {
                 reject("ERROR");
             }
@@ -42,19 +19,37 @@ const customFetch = (products, timeout) => {
     })
 }
 
-const ItemList =()=> { 
-    customFetch(2000,products)
-    .then((products) => console.log("ANDA", products))
-    .catch((error) => console.log("NO ANDA", error)); 
+const ItemList =()=> {
     
-    return <div className="contenedor">{products.map(item => <Item 
-                                            key={item.id}
-                                            img={item.img}
-                                            name={item.name}
-                                            stock={item.stock}
-                                            cost={item.cost}
+    const [dato,setDato] = useState([]);
+    const {idcategory}= useParams();
+    
+    console.log(idcategory);
+
+    useEffect(()=>{
+        if(idcategory === undefined){
+        customFetch(data,500)
+            .then(dato=>setDato(dato))
+            .catch(error=>console.log(error))
+        }else{
+            customFetch(1000, data.filter(item => item.id === parseInt(idcategory)))
+                .then(dato=>setDato(dato))
+                .catch(error=>console.log(error))
+        }
+        
+    }, [idcategory]);
+
+    return <div className="container lista">{data.map(dato => <Item
+                                            key={dato.id} 
+                                            item={dato}
                                             />
     )}</div>
 }
 
 export default ItemList
+
+
+/* customFetch(2000,data.filter(item => item.categoryId === parseInt(idcategory)))
+        .then((data) => console.log("ANDA", typeof data))
+        .catch((error) => console.log("NO ANDA", error)); 
+*/

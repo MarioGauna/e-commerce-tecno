@@ -77,10 +77,15 @@
 }
 
 .card{
-  margin: 50px auto;
+  margin: 10px;
 }
 
 .detalle2{
   list-style-type: none;
   padding: 0;
+}
+
+.lista{
+  display: flex;
+  flex-wrap: wrap;
 }
