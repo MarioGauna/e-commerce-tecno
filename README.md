@@ -1,4 +1,4 @@
-# Proyecto Final Coderhouse React JS
+# Pre entrega proyecto Final Coderhouse React JS
 
 E-commerce desarrollado en React JS como parte del proyecto correspondiente al curso de CoderHouse.
 
@@ -10,9 +10,7 @@ E-commerce desarrollado en React JS como parte del proyecto correspondiente al c
 
 ## Ejemplo de funcionamiento
 
-![Ejemplo](../src/image/Preentregafinal.gif)
-
-
+![Preentregafinal](https://user-images.githubusercontent.com/87961909/154577160-09f837ef-cdfb-4880-b5bb-1a97a7445882.gif)
 
 # Proyecto creado por
 
