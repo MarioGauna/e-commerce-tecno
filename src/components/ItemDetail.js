@@ -1,8 +1,23 @@
-import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemCount from "./ItemCount";
+import Checkout from './Checkout'
+import {useEffect, useState} from 'react';
 
 function ItemDetail({item}){
+
+  const [check,setCheck]=useState(false);
+
+  console.log(check);
+
+  useEffect(()=>{
+    console.log("funciona");
+    return(
+      <div>
+        <ItemCount/>
+      </div>
+      
+    )
+  },[check])
   
   return(
     <div className="container">
@@ -18,7 +33,8 @@ function ItemDetail({item}){
               <li>Stock: {item.stock}</li>
               <li>Precio: $ {item.price}</li>
             </ul>
-          <ItemCount/>
+            {check === false && <ItemCount envio={check} send={setCheck}/>}
+            {check === true && <Checkout/>}
         </div>
       </div>
     </div>

@@ -43,7 +43,7 @@
 }
 
 .btn{
-  background-color: transparent !important;
+  /* background-color: transparent !important; */
   border: 0 !important;
 }
 
@@ -67,9 +67,9 @@
   
 }
 
-.detalle{
+/* .detalle{
   background-color: rgb(127, 150, 255) !important;
-}
+} */
 
 .card-img-top{
   width: 300px;
@@ -108,6 +108,10 @@
   min-height: 100vh;
 }
 
-/* .lower{
-  
-} */
+.mask{
+  background-color: rgba(251, 251, 251, 0.2);
+}
+
+.test1{
+  max-width: 300px;
+}

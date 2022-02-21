@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image1 from "../image/minus.png";
 import Image2 from "../image/plus.png";
 
-const ItemCount = () =>{
+const ItemCount = (props) =>{
 
     const[valor, setValor]= useState(1);
 
@@ -22,7 +22,11 @@ const ItemCount = () =>{
 
     const mostrar = () =>{
 
-        alert("Usted a seleccionado " + valor + " items");
+        alert("Se agregaran al carrito " + valor + " items");
+        const child = ()=>{
+            props.send(true);
+        }
+        child();
     }
 
     return(
