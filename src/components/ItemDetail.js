@@ -1,24 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemCount from "./ItemCount";
 import Checkout from './Checkout'
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 
 function ItemDetail({item}){
 
-  const [check,setCheck]=useState(false);
+  const [check,setCheck]=useState(0);
 
-  console.log(check);
+  const onAdd =(cantidad)=>{
+    alert("Usted a seleccionado " + cantidad + " items.");
+    setCheck(cantidad);
+  }
 
-  useEffect(()=>{
-    console.log("funciona");
-    return(
-      <div>
-        <ItemCount/>
-      </div>
-      
-    )
-  },[check])
-  
   return(
     <div className="container">
       <h1 className="my-4">{item.name}</h1>
@@ -33,8 +26,8 @@ function ItemDetail({item}){
               <li>Stock: {item.stock}</li>
               <li>Precio: $ {item.price}</li>
             </ul>
-            {check === false && <ItemCount envio={check} send={setCheck}/>}
-            {check === true && <Checkout/>}
+            {check === 0 && <ItemCount stock={item.stock} initial={check} onAdd={onAdd}/>}
+            {check !== 0 && <Checkout/>}
         </div>
       </div>
     </div>
