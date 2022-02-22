@@ -1,15 +1,19 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemCount from "./ItemCount";
 import Checkout from './Checkout'
-import {useState} from 'react';
+import {useContext, useState} from 'react';
+import {CartContext}  from './CartContext';
 
 function ItemDetail({item}){
 
   const [check,setCheck]=useState(0);
 
+  const cartTex=useContext(CartContext);
+
   const onAdd =(cantidad)=>{
     alert("Usted a seleccionado " + cantidad + " items.");
     setCheck(cantidad);
+    cartTex.addItem(item, cantidad);
   }
 
   return(
