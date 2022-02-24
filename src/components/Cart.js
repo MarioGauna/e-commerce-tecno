@@ -7,10 +7,8 @@ const Cart = () =>{
 
     const cartTex=useContext(CartContext);
 
-    console.log(cartTex.cartList);
-
     const borrarItem=(item)=>{
-        cartTex.cartList.removeItem(item.id);
+        cartTex.removeItem(item.id);
     } 
     
     const limpiar=()=>{
@@ -49,7 +47,7 @@ const Cart = () =>{
                                 <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
                                 {/* <!-- Data --> */}
                                 <p><strong>Cantidad: {item.cantidad}</strong></p>
-                                <button type="button" className="btn btn-primary btn-sm me-1 mb-2" title="Remover Item" onClick={()=>borrarItem(item.id)}>Remover</button>
+                                <button type="button" className="btn btn-primary btn-sm me-1 mb-2" title="Remover Item" onClick={()=>borrarItem(item)}>Remover</button>
                                 {/* <!-- Data --> */}
                                 </div>
                 
