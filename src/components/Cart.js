@@ -7,6 +7,16 @@ const Cart = () =>{
 
     const cartTex=useContext(CartContext);
 
+    console.log(cartTex);
+
+    const borrarItem=(item)=>{
+        cartTex.removeItem(item);
+    }
+    
+    const limpiar=()=>{
+        cartTex.clearList();
+    }
+    
     return(
             
         <section className="h-100 gradient-custom">
@@ -14,7 +24,7 @@ const Cart = () =>{
     <h3 className="display-5 mb-2 text-center">Carrito de compras</h3>
         <p className="mb-5 text-center">
             <i className="text-info font-weight-bold">3</i> items en tu carrito</p>
-</div>
+            </div>
             <div className="container py-5">
                 <div className="row d-flex justify-content-center my-4">
                     <div className="col-md-8">
@@ -39,10 +49,8 @@ const Cart = () =>{
                 
                                 <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
                                 {/* <!-- Data --> */}
-                                <p><strong>lorem</strong></p>
-                                <button type="button" className="btn btn-primary btn-sm me-1 mb-2" title="Remover Item">
-                                    <i className="fas fa-trash">Remover</i>
-                                </button>
+                                <p><strong>Cantidad: {item.cantidad}</strong></p>
+                                <button type="button" className="btn btn-primary btn-sm me-1 mb-2" title="Remover Item" onClick={()=>borrarItem(item)}>Remover</button>
                                 {/* <!-- Data --> */}
                                 </div>
                 
@@ -111,6 +119,7 @@ const Cart = () =>{
                 </div>
                 <div className="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
                     <Link to="/"><p>Seguir comprando</p></Link>
+                    <button type="button" className="btn btn-primary" onClick={limpiar}>Limpiar Carrito</button>
                 </div>
             </div>
         </section>
@@ -118,6 +127,3 @@ const Cart = () =>{
 }
 
 export default Cart;
-
-
-
