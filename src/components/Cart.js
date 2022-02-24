@@ -7,11 +7,11 @@ const Cart = () =>{
 
     const cartTex=useContext(CartContext);
 
-    console.log(cartTex);
+    console.log(cartTex.cartList);
 
     const borrarItem=(item)=>{
-        cartTex.removeItem(item);
-    }
+        cartTex.cartList.removeItem(item.id);
+    } 
     
     const limpiar=()=>{
         cartTex.clearList();
@@ -22,8 +22,7 @@ const Cart = () =>{
         <section className="h-100 gradient-custom">
             <div className="col-lg-12 col-md-12 col-12">
     <h3 className="display-5 mb-2 text-center">Carrito de compras</h3>
-        <p className="mb-5 text-center">
-            <i className="text-info font-weight-bold">3</i> items en tu carrito</p>
+        <p className="mb-5 text-center">{cartTex.cartList.length} items en tu carrito</p>
             </div>
             <div className="container py-5">
                 <div className="row d-flex justify-content-center my-4">
@@ -50,7 +49,7 @@ const Cart = () =>{
                                 <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
                                 {/* <!-- Data --> */}
                                 <p><strong>Cantidad: {item.cantidad}</strong></p>
-                                <button type="button" className="btn btn-primary btn-sm me-1 mb-2" title="Remover Item" onClick={()=>borrarItem(item)}>Remover</button>
+                                <button type="button" className="btn btn-primary btn-sm me-1 mb-2" title="Remover Item" onClick={()=>borrarItem(item.id)}>Remover</button>
                                 {/* <!-- Data --> */}
                                 </div>
                 

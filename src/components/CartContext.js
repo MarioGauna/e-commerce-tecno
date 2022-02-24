@@ -6,9 +6,8 @@ const CartContextProvider=({children}) =>{
     
     const [cartList,setCartList]=useState([]);
 
-    console.log(cartList);
-
-    const addItem = (item,cantidad,isInCart)=>{
+    const addItem = (item,cantidad)=>{
+        if(item.isInCart === false){
             setCartList([
                 ...cartList,
                 {
@@ -20,10 +19,14 @@ const CartContextProvider=({children}) =>{
                 cantidad:cantidad,
                 isInCart:true,
             }]);
+        }else{
+            if(cartList.map((elem)=> elem.id === item.id)){
+                setCartList([
+                    cantidad = item.cantidad + 1,
+                ])         
+            }
+        }         
     }
-    
-// if(cartList.isInCart === false){
-// setCartList(cantidad: cantidad ++)
 
     const removeItem = (id)=>{
         const newList= cartList.filter((item) => item.id !== id);
