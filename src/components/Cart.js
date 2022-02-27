@@ -15,16 +15,12 @@ const Cart = () =>{
         cartTex.clearList();
     }
 
-    /* const lolo=(item)=>{
-        cartTex.cartList.itemTotal(it);
-    } */
-
     return(
             
         <section className="h-100 gradient-custom">
             <div className="col-lg-12 col-md-12 col-12">
     <h3 className="display-5 mb-2 text-center">Carrito de compras</h3>
-        <p className="mb-5 text-center">{cartTex.cartList.length} items en tu carrito</p>
+        <p className="mb-5 text-center">{cartTex.badge()} items en tu carrito</p>
             </div>
             <div className="container py-5">
                 <div className="row d-flex justify-content-center my-4">
@@ -97,21 +93,23 @@ const Cart = () =>{
                         </div>
                         <div className="card-body">
                         <ul className="list-group list-group-flush">
-                            <li
-                            className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                            Productos
-                            <span>lorem</span>
+                            
+                            {
+                                cartTex.cartList.map(item=>(
+                                    <li
+                            className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0" key={item.id}>
+                            {item.name}
+                            <span>$ {cartTex.itemTotal(item.id)}</span>
                             </li>
-                            {/* <li className="list-group-item d-flex justify-content-between align-items-center px-0">
-                            Shipping
-                            <span>lorem</span>
-                            </li> */}
+                                ))
+
+                            }
                             <li
                             className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                             <div>
                                 <strong>Precio Total</strong>
                             </div>
-                            <span><strong>$lorem</strong></span>
+                            <span><strong>$ {cartTex.total()}</strong></span>
                             </li>
                         </ul>
                         <button type="button" className="btn btn-primary btn-lg btn-block">
@@ -122,8 +120,8 @@ const Cart = () =>{
                     </div>
                 </div>
                 <div className="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
-                    <Link to="/"><p>Seguir comprando</p></Link>
-                    <button type="button" className="btn btn-primary" onClick={limpiar}>Limpiar Carrito</button>
+                    <Link to="/"><p>Seguir comprando</p></Link>                  
+                    <button type="button" className="btn btn-primary" onClick={limpiar} style={{visibility: ! cartTex.cartList.length ? 'hidden': 'visible'}}>Limpiar Carrito</button>
                 </div>
             </div>
         </section>

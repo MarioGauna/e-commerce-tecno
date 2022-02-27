@@ -49,8 +49,14 @@ const CartContextProvider=({children}) =>{
         return cartList[it].price * cartList[it].cantidad;
     }
 
+    const total=()=>{
+        const initialValue = 0;
+        const subTotal=cartList.map(item=>itemTotal(item.id));
+        return subTotal.reduce((previousValue,currentValue)=>previousValue+currentValue,initialValue);
+    }
+
     return(
-        <CartContext.Provider value={{cartList, addItem, removeItem, clearList, badge, itemTotal}}>
+        <CartContext.Provider value={{cartList, addItem, removeItem, clearList, badge, itemTotal, total}}>
             {children}
         </CartContext.Provider>
     );
