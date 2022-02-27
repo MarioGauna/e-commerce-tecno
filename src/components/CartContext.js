@@ -20,7 +20,10 @@ const CartContextProvider=({children}) =>{
             cantidad: cantidad,
             isInCart:true,
         }])}else{
-            checkCart.cantidad += cantidad
+            checkCart.cantidad += cantidad;
+            setCartList([
+                ...cartList
+            ]);
         }        
     }
 
@@ -34,8 +37,20 @@ const CartContextProvider=({children}) =>{
         setCartList([]);
     }
 
+    const badge =()=>{
+        const initialValue = 0;
+        let cantSum= cartList.map(item=>item.cantidad);
+        let sumWithInitial = cantSum.reduce((previousValue, currentValue) => previousValue + currentValue,initialValue);
+        return sumWithInitial;
+    }
+
+    const itemTotal=(id)=>{
+        const it= cartList.map(item=>item.id).indexOf(id);
+        return cartList[it].price * cartList[it].cantidad;
+    }
+
     return(
-        <CartContext.Provider value={{cartList, addItem, removeItem, clearList}}>
+        <CartContext.Provider value={{cartList, addItem, removeItem, clearList, badge, itemTotal}}>
             {children}
         </CartContext.Provider>
     );
