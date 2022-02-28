@@ -134,3 +134,15 @@
 .plantilla{
   width: auto;
 }
+
+.estatico{
+  width: auto;
+  height: 300px;
+  display: grid !important;
+  place-items: center;
+}
+
+.cartEsta{
+  color: rgba(0, 0, 0, 0.100);
+  font-size: 70px !important;
+}

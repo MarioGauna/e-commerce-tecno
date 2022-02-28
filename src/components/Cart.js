@@ -82,7 +82,9 @@ const Cart = () =>{
                             </div>
                         ))
                         :
-                        <div>Vacio</div>
+                        <div className="card mb-4 estatico">
+                            <p className='cartEsta'>Carrito Vacio</p>
+                        </div>
                     }
 
                     </div>
