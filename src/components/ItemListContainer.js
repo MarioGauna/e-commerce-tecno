@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from '../components/ItemList';
-import data from '../utilidades/data'
+//import data from '../utilidades/data'
+import { collection, getDocs } from "firebase/firestore";
+import db from '../utilidades/firebase'
 
-let api = true;
+// let api = true;
 
-const customFetch = (data, timeout) => {
+/* const customFetch = (data, timeout) => {
     return new Promise((resolve, reject) =>{
         setTimeout(() => {
             if (api) {
@@ -15,7 +17,7 @@ const customFetch = (data, timeout) => {
             }
         }, timeout);
     })
-}
+} */
 
 const ItemListContainer = () =>{
     
@@ -23,15 +25,26 @@ const ItemListContainer = () =>{
     const {idcategory}= useParams();
 
     useEffect(()=>{
-        if(idcategory === undefined){
-        customFetch(data, 1000)
-            .then(res=>setDato(res))
-            .catch(error=>console.log(error))
-        }else{
-            customFetch(data.filter(item => item.categoryId === parseInt(idcategory)),1000)
-                .then(res=>setDato(res))
-                .catch(error=>console.log(error))
+        
+        const firestoreFetch = async()=>{
+            const querySnapshot = await getDocs(collection(db, "productos"));
+            return querySnapshot.docs.map(document=>({
+                id:document.id,
+                ...document.data()
+            }))
         }
+        firestoreFetch()
+            .then(result=>setDato(result))
+            .catch(error => console.log(error));
+        // if(idcategory === undefined){
+        // customFetch(data, 1000)
+        //     .then(res=>setDato(res))
+        //     .catch(error=>console.log(error))
+        // }else{
+        //     customFetch(data.filter(item => item.categoryId === parseInt(idcategory)),1000)
+        //         .then(res=>setDato(res))
+        //         .catch(error=>console.log(error))
+        // }
         
     }, [idcategory]);
     

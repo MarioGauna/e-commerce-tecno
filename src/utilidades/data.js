@@ -30,7 +30,6 @@ const data = [
         image: image1,
         categoryId: 1,
         ofertaId: 1,
-        isInCart: false,
     },
     {
         id: 2,
@@ -41,7 +40,6 @@ const data = [
         image: image2,
         categoryId: 1,
         ofertaId: 2,
-        isInCart: false,
     },
     {
         id: 3,
@@ -52,7 +50,6 @@ const data = [
         image: image3,
         categoryId: 1,
         ofertaId:2,
-        isInCart: false,
     },
     {
         id: 4,
@@ -63,7 +60,6 @@ const data = [
         image: image4,
         categoryId: 2,
         ofertaId:1,
-        isInCart: false,
     },
     {
         id: 5,
@@ -74,7 +70,6 @@ const data = [
         image: image5,
         categoryId: 2,
         ofertaId:2,
-        isInCart: false,
     },
     {
         id: 6,
@@ -85,7 +80,6 @@ const data = [
         image: image6,
         categoryId: 2,
         ofertaId:2,
-        isInCart: false,
     },
     {
         id: 7,
@@ -96,7 +90,6 @@ const data = [
         image: image7,
         categoryId: 3,
         ofertaId: 2,
-        isInCart: false,
     },
     {
         id: 8,
@@ -107,7 +100,6 @@ const data = [
         image: image8,
         categoryId: 3,
         ofertaId:1,
-        isInCart: false,
     },
     {
         id: 9,
@@ -118,7 +110,6 @@ const data = [
         image: image9,
         categoryId: 3,
         ofertaId:2,
-        isInCart: false,
     },
     {
         id: 10,
@@ -129,7 +120,6 @@ const data = [
         image: image10,
         categoryId: 4,
         ofertaId:1,
-        isInCart: false,
     },
     {
         id: 11,
@@ -140,7 +130,6 @@ const data = [
         image: image11,
         categoryId: 4,
         ofertaId:2,
-        isInCart: false,
     },
     {
         id: 12,
@@ -151,7 +140,6 @@ const data = [
         image: image12,
         categoryId: 4,
         ofertaId:2,
-        isInCart: false,
     },
     {
         id: 13,
@@ -162,7 +150,6 @@ const data = [
         image: image13,
         categoryId: 5,
         ofertaId:2,
-        isInCart: false,
     },
     {
         id: 14,
@@ -173,7 +160,6 @@ const data = [
         image: image14,
         categoryId: 5,
         ofertaId:2,
-        isInCart: false,
     },
     {
         id: 15,
@@ -184,7 +170,6 @@ const data = [
         image: image15,
         categoryId: 5,
         ofertaId:1,
-        isInCart: false,
     },
     {
         id: 16,
@@ -195,7 +180,6 @@ const data = [
         image: image16,
         categoryId: 6,
         ofertaId:2,
-        isInCart: false,
     },
     {
         id: 17,
@@ -206,7 +190,6 @@ const data = [
         image: image17,
         categoryId: 6,
         ofertaId:2,
-        isInCart: false,
     },{
         id: 18,
         name: "SeaSonic PRIME Ultra Titanium 1000 W 80+ Titanium Certified",
@@ -216,7 +199,6 @@ const data = [
         image: image18,
         categoryId: 6,
         ofertaId:1,
-        isInCart: false,
     },
     {
         id: 19,
@@ -227,7 +209,6 @@ const data = [
         image: image19,
         categoryId: 7,
         ofertaId:1,
-        isInCart: false,
     },{
         id: 20,
         name: "Corsair 5000D AIRFLOW",
@@ -237,7 +218,6 @@ const data = [
         image: image20,
         categoryId: 7,
         ofertaId:1,
-        isInCart: false,
     },{
         id: 21,
         name: "Thermaltake Core P3",
@@ -247,7 +227,6 @@ const data = [
         image: image21,
         categoryId: 7,
         ofertaId:1,
-        isInCart: false,
     }
 ];
 export default data;

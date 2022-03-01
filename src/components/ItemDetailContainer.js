@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from '../components/ItemDetail';
 import { customFetch } from '../utilidades/customFetch';
-import data from '../utilidades/data'
+//import data from '../utilidades/data'
+import { collection, getDocs } from "firebase/firestore";
+import db from '../utilidades/firebase'
 
 const ItemDetailContainer = () =>{
 
