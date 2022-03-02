@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from '../components/ItemDetail';
-import { customFetch } from '../utilidades/customFetch';
-//import data from '../utilidades/data'
-import { collection, getDocs } from "firebase/firestore";
-import db from '../utilidades/firebase'
+import { getDoc, doc } from "firebase/firestore";
+import db from '../utilidades/firebaseConfig'
 
 const ItemDetailContainer = () =>{
 
@@ -12,6 +10,25 @@ const ItemDetailContainer = () =>{
     const {iditem}= useParams();
 
     useEffect(()=>{
+        
+        const firestoreFetchDeta=async(iditem)=>{
+            const docRef=doc(db,"productos",iditem);
+            const docSnap=await getDoc(docRef);
+            if(docSnap.exists()){
+                return{
+                    id:iditem,
+                    ...docSnap.data()
+                }
+            }else{
+                console.log("Documento Vacío");
+            }
+        }
+        firestoreFetchDeta()
+            .then(result=>setDato(result))
+            .catch(error => console.log(error));  
+    }, [iditem]);
+    
+    /* useEffect(()=>{
         
         if(iditem === undefined){
         customFetch(data, 1000)
@@ -23,7 +40,7 @@ const ItemDetailContainer = () =>{
                 .catch(error=>console.log(error))
         }
         
-    }, [iditem]);
+    }, [iditem]); */
 
     return (
         <>

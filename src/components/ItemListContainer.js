@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import ItemList from '../components/ItemList';
 //import data from '../utilidades/data'
 import { collection, getDocs } from "firebase/firestore";
-import db from '../utilidades/firebase'
+import db from '../utilidades/firebaseConfig'
 
 // let api = true;
 
