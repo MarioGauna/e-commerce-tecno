@@ -1,7 +1,7 @@
-import{query,orderBy,where,collection,getDocs} from "@firebase/firestore";
+import{query,orderBy,where,collection,getDocs,getDoc,doc} from "firebase/firestore";
 import db from "./firebaseConfig"
 
-const firestoreFetch= async(idcategory)=>{
+export const firestoreFetch= async(idcategory)=>{
     let q;
     if (idcategory){
         q=query(collection(db,"productos"), where("categoryId", "==", idcategory));
@@ -16,4 +16,15 @@ const firestoreFetch= async(idcategory)=>{
     return dataFromFirestore;
 }
 
-export default firestoreFetch;
+export const firestoreFetchDeta=async(iditem)=>{
+    const docRef=doc(db,"productos",iditem);
+    const docSnap=await getDoc(docRef);
+    if(docSnap.exists()){
+        return{
+            id:iditem,
+            ...docSnap.data()
+        }
+    }else{
+        console.log("Documento Vacío");
+    }
+}
