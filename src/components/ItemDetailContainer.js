@@ -39,7 +39,7 @@ const ItemDetailContainer = () =>{
             <p>Cargando...</p>
         }
         </>
-    )
+    );
 }
 
 export default ItemDetailContainer;

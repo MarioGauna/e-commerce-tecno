@@ -20,7 +20,7 @@ import image19 from "../image/imagen19.jpg"
 import image20 from "../image/imagen20.jpg"
 import image21 from "../image/imagen21.jpg"
 
-const data = [
+const productos = [
     {
         id: 1,
         name: "Ryzen 3 3100",

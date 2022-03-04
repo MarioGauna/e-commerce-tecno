@@ -12,9 +12,9 @@ const ItemListContainer = () =>{
     const firestoreFetch= async(idcategory)=>{
         let q;
         if (idcategory){
-            q=query(collection(db,"productos"), where("categoryId", "==", idcategory));
+            q=query(collection(db,"productos"), where('categoryId', '==' ,idcategory));
         }else{
-            q=query(collection(db,"productos"), orderBy("categoryId"));
+            q=query(collection(db,"productos"), orderBy('id'));
         }
         const querySnapshot = await getDocs(q);
         const dataFromFirestore=querySnapshot.docs.map(document=>({
