@@ -2,8 +2,50 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useContext } from 'react';
 import { CartContext } from './CartContext';
 import { Link } from 'react-router-dom';
+import{serverTimestamp, setDoc, doc, collection, updateDoc, increment} from 'firebase/firestore';
+import db from "../utilidades/firebaseConfig";
 
 const Cart = () =>{
+
+    const crearOrden=()=>{
+        let orden={
+            buyer:{
+                name:"Mario Alberto Gauna",
+                phone:"123456789",
+                email:"pepe@gmail.com"
+            },
+            date:serverTimestamp(),
+            items: cartTex.cartList.map((item)=>{
+                return{
+                    id:item.id,
+                    title:item.name,
+                    cost:item.price,
+                    qty:item.cantidad
+                };
+            }),
+            total:cartTex.total(),
+        }
+        console.log(orden);
+
+        const addOrden= async()=>{
+            const newOrden=doc(collection(db,"ordenes"));
+            await setDoc(newOrden, orden);
+            return newOrden;
+        }
+    
+        addOrden()
+        .then((result)=> {
+            alert("Orden Creada: " + result.id); 
+            cartTex.cartList.map(async(item)=>{
+                const itemRef=doc(db,"productos", item.id);
+                await updateDoc(itemRef,{
+                    stock:increment(-item.qty),
+                });
+            });
+            cartTex.clearList();
+        })
+        .catch((error)=>console.log(error));
+    };
 
     const cartTex=useContext(CartContext);
 
@@ -114,7 +156,7 @@ const Cart = () =>{
                             <span><strong>$ {cartTex.total()}</strong></span>
                             </li>
                         </ul>
-                        <button type="button" className="btn btn-primary btn-lg btn-block">
+                        <button type="button" className="btn btn-primary btn-lg btn-block" onClick={crearOrden}>
                             Comprar
                         </button>
                         </div>

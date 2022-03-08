@@ -12,7 +12,7 @@ const ItemDetailContainer = () =>{
     const firestoreFetchDeta=async(iditem)=>{
         const docRef=doc(db,"productos",iditem);
         const docSnap=await getDoc(docRef);
-        console.log(docSnap);
+
         if(docSnap.exists()){
             return{
                 id:iditem,
