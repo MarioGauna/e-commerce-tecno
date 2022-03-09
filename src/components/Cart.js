@@ -37,9 +37,9 @@ const Cart = () =>{
         .then((result)=> {
             alert("Orden Creada: " + result.id); 
             cartTex.cartList.map(async(item)=>{
-                const itemRef=doc(db,"productos", item.id);
+                const itemRef=doc(db,"products", item.id);
                 await updateDoc(itemRef,{
-                    stock:increment(-item.qty),
+                    stock:increment(-item.cantidad),
                 });
             });
             cartTex.clearList();

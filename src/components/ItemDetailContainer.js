@@ -10,7 +10,7 @@ const ItemDetailContainer = () =>{
     const {iditem}= useParams();
 
     const firestoreFetchDeta=async(iditem)=>{
-        const docRef=doc(db,"productos",iditem);
+        const docRef=doc(db,"products",iditem);
         const docSnap=await getDoc(docRef);
 
         if(docSnap.exists()){
