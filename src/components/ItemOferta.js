@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Item from '../components/Item.js';
+import Loading from "../utilidades/Loading.js";
 
 const ItemOferta = ({item})=> {
 
@@ -34,14 +35,13 @@ const ItemOferta = ({item})=> {
                 autoPlay={true}
                 autoPlaySpeed={5000}
                 transitionDuration={2000}
-                itemClass="pepe"
                 >
                         {
                         item
                         ?
                         item.map(elem =><Item key={elem.id} item={elem}/>)
                         :
-                        <p>Cargando...</p>
+                        <Loading/>
                         }
                 </Carousel>
                 </div>
