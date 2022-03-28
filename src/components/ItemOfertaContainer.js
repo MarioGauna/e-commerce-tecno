@@ -1,20 +1,17 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import ItemList from '../components/ItemList';
+import ItemOferta from '../components/ItemOferta';
 import{query,where,collection,getDocs} from "firebase/firestore";
 import db from "../utilidades/firebaseConfig"
 
-const ItemListContainer = () =>{
+const ItemOfertaContainer = () =>{
     
     const [dato,setDato] = useState([]);
-    const {idcategory}= useParams();
+    const ofertaId= 1;
 
-    const firestoreFetch= async(idcategory)=>{
+    const firestoreFetch= async(ofertaId)=>{
         let q;
-        if (idcategory){
-            q=query(collection(db,"products"), where('categoryId', '==' ,idcategory));
-        }else{
-            q=query(collection(db,"products"));
+        if (ofertaId){
+            q=query(collection(db,"products"), where('ofertaId', '==' , 1));
         }
         const querySnapshot = await getDocs(q);
         const dataFromFirestore=querySnapshot.docs.map(document=>({
@@ -26,14 +23,14 @@ const ItemListContainer = () =>{
 
     useEffect(()=>{
         
-        firestoreFetch(idcategory)
+        firestoreFetch(ofertaId)
             .then(result=>setDato(result))
             .catch(error => console.log(error)) 
-    }, [idcategory]);
+    }, [ofertaId]);
 
     return(
-        <ItemList item={dato}/>
+        <ItemOferta item={dato}/>
     );
 }
 
-export default ItemListContainer;
+export default ItemOfertaContainer;

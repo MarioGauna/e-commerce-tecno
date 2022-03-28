@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from '../components/ItemDetail';
+import Loading from '../utilidades/Loading'
 import{getDoc,doc} from "firebase/firestore";
 import db from "../utilidades/firebaseConfig"
 
@@ -10,7 +11,7 @@ const ItemDetailContainer = () =>{
     const {iditem}= useParams();
 
     const firestoreFetchDeta=async(iditem)=>{
-        const docRef=doc(db,"productos",iditem);
+        const docRef=doc(db,"products",iditem);
         const docSnap=await getDoc(docRef);
 
         if(docSnap.exists()){
@@ -36,7 +37,7 @@ const ItemDetailContainer = () =>{
             ?
             <ItemDetail item={dato} />
             :
-            <p>Cargando...</p>
+            <Loading/>
         }
         </>
     );

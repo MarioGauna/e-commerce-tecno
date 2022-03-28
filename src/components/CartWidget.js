@@ -8,7 +8,7 @@ const CartWidget = () =>{
     const cartTex=useContext(CartContext);
     
     return(
-        <button type="button" className="btn btn-primary position-relative">
+        <button type="button" className="btn btn-primary position-relative carrito">
         <img src={Image} alt="Imagen no encontrada"></img>
         <span className="position-absolute top-50 start-100 translate-middle badge rounded-pill bg-danger" style={{visibility: ! cartTex.cartList.length ? 'hidden': 'visible'}}>
         {cartTex.badge()}

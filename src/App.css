@@ -3,16 +3,23 @@
   margin: 0;
 }
 
-
 .navbar{
   background: #383a38;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
-  height: 60px;
+  height: 80px;
 }
 
-.navbar-nav{
-  margin-right: 100px;
+.ms-auto{
+  margin-right: 750px !important;
+}
+
+.carrito{
+  background-color: transparent !important;
+}
+
+.carrito:hover{
+  background-color: #085cf8 !important;
 }
 
 .nav-item{
@@ -43,7 +50,6 @@
 }
 
 .btn{
-  /* background-color: transparent !important; */
   border: 0 !important;
 }
 
@@ -59,17 +65,13 @@
 }
 
 .card{
-  width: 18rem;
+  width: 280px;
+  height: 430px;
 }
 
 .contenedor{
   display: flex;
-  
 }
-
-/* .detalle{
-  background-color: rgb(127, 150, 255) !important;
-} */
 
 .card-img-top{
   width: 300px;
@@ -88,6 +90,7 @@
 .lista{
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .deta{
@@ -133,6 +136,7 @@
 
 .plantilla{
   width: auto;
+  height: 280px;
 }
 
 .estatico{
@@ -146,3 +150,97 @@
   color: rgba(0, 0, 0, 0.100);
   font-size: 70px !important;
 }
+
+.social{
+  background: #383a38;
+}
+
+.social__link:hover{
+  background-color: #ff000080;
+}
+
+
+.carousel{
+  height: 576px;
+  width: 1024px;
+  margin: 0 auto;
+}
+
+.footer{
+  margin-top: 20vh;
+}
+
+.sumario{
+  width: 90%;
+  height: auto;
+}
+
+.precio{
+  align-self: center;
+}
+
+.carouselCont{
+  margin: 0 auto;
+  width: 1500px;
+}
+
+.ofertaTitle{
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.lightSpeedIn {
+  -webkit-animation-name: lightSpeedIn;
+  animation-name: lightSpeedIn;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes lightSpeedIn {
+  0% {
+  -webkit-transform: translate3d(100%, 0, 0) skewX(-30deg);
+  transform: translate3d(100%, 0, 0) skewX(-30deg);
+  opacity: 0;
+  }
+  60% {
+  -webkit-transform: skewX(20deg);
+  transform: skewX(20deg);
+  opacity: 1;
+  }
+  80% {
+  -webkit-transform: skewX(-5deg);
+  transform: skewX(-5deg);
+  opacity: 1;
+  }
+  100% {
+  -webkit-transform: none;
+  transform: none;
+  opacity: 1;
+  }
+  }
+  @keyframes lightSpeedIn {
+  0% {
+  -webkit-transform: translate3d(100%, 0, 0) skewX(-30deg);
+  transform: translate3d(100%, 0, 0) skewX(-30deg);
+  opacity: 0;
+  }
+  60% {
+  -webkit-transform: skewX(20deg);
+  transform: skewX(20deg);
+  opacity: 1;
+  }
+  80% {
+  -webkit-transform: skewX(-5deg);
+  transform: skewX(-5deg);
+  opacity: 1;
+  }
+  100% {
+  -webkit-transform: none;
+  transform: none;
+  opacity: 1;
+  }
+  }

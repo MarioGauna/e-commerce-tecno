@@ -37,9 +37,9 @@ const Cart = () =>{
         .then((result)=> {
             alert("Orden Creada: " + result.id); 
             cartTex.cartList.map(async(item)=>{
-                const itemRef=doc(db,"productos", item.id);
+                const itemRef=doc(db,"products", item.id);
                 await updateDoc(itemRef,{
-                    stock:increment(-item.qty),
+                    stock:increment(-item.cantidad),
                 });
             });
             cartTex.clearList();
@@ -61,7 +61,7 @@ const Cart = () =>{
             
         <section className="h-100 gradient-custom">
             <div className="col-lg-12 col-md-12 col-12">
-    <h3 className="display-5 mb-2 text-center">Carrito de compras</h3>
+        <h3 className="display-5 mb-2 text-center">Carrito de compras</h3>
         <p className="mb-5 text-center">{cartTex.badge()} items en tu carrito</p>
             </div>
             <div className="container py-5">
@@ -77,49 +77,25 @@ const Cart = () =>{
                                     <h5 className="mb-0">{item.name}</h5>
                                 </div>
                                 <div className="card-body">
-                                {/* <!-- Single item --> */}
                                 <div className="row">
                                     <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                                    {/* <!-- Image --> */}
                                     <div className="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
                                         <img src={item.image} className="w-100" alt="Imagen no encontrada"/>
                                     </div>
-                                    {/* <!-- Image --> */}
                                     </div>
-                    
                                     <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                                    {/* <!-- Data --> */}
                                     <p><strong>Cantidad: {item.cantidad}</strong></p>
                                     <button type="button" className="btn btn-primary btn-sm me-1 mb-2" title="Remover Item" onClick={()=>borrarItem(item)}>Remover</button>
-                                    {/* <!-- Data --> */}
                                     </div>
-                    
-                                    <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                                    {/* <!-- Quantity --> */}
-                                    {/* <div className="d-flex mb-4 test1">
-                                        <button className="btn btn-primary px-3 me-2">
-                                        <i className="fas fa-minus">-</i>
-                                        </button>
-                    
-                                        <div className="form-outline">
-                                        <input id="form1" type="number" className="form-control" />
-                                        <label className="form-label">Cantidad</label>
-                                        </div>
-                    
-                                        <button className="btn btn-primary px-3 ms-2">
-                                        <i className="fas fa-plus">+</i>
-                                        </button>
-                                    </div> */}
-                                    {/* <!-- Quantity --> */}
-                    
-                                    {/* <!-- Price --> */}
+                                    <div className="col-lg-4 col-md-6 mb-4 mb-lg-0 precio">
                                     <p className="text-start text-md-center">
-                                        <strong>$ {item.price} c/u / $ {cartTex.itemTotal(item.id)}</strong>
+                                        <strong>Precio por Unidad $ {item.price} c/u</strong>
                                     </p>
-                                    {/* <!-- Price --> */}
+                                    <p className="text-start text-md-center">
+                                        <strong>Precio Total $ {cartTex.itemTotal(item.id)}</strong>
+                                    </p>
                                     </div>
                                 </div>
-                                {/* <!-- Single item --> */}
                                 </div>
                             </div>
                         ))
@@ -128,12 +104,11 @@ const Cart = () =>{
                             <p className='cartEsta'>Carrito Vacio</p>
                         </div>
                     }
-
                     </div>
                     <div className="col-md-4">
-                    <div className="card mb-4">
+                    <div className="card mb-4 sumario">
                         <div className="card-header py-3">
-                        <h5 className="mb-0">Summario de compra</h5>
+                        <h5 className="mb-0">Sumario de compra</h5>
                         </div>
                         <div className="card-body">
                         <ul className="list-group list-group-flush">
