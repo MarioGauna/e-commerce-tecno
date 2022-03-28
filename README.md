@@ -1,6 +1,6 @@
 # Proyecto Final React JS Coderhouse
 
-##Proyecto E-Commerce Tienda electrónica Xgaming
+## Proyecto E-Commerce Tienda electrónica Xgaming
 
 - E-commerce desarrollado en React JS como parte del proyecto correspondiente al curso de CoderHouse.
 
@@ -26,13 +26,13 @@ IconCart Se puede acceder en todo momento y tiene una indicación de la cantidad
 Cart Contiene el listado de productos seleccionados, la cantidad por producto elegido, la suma del precio de las unidades y la suma total de todos los productos, un boton para confirmar la compra, un boton para eliminar todo el listado de productos a comprar, y un boton mas que nos lleva devuelta al home para seguir comprando.
 
 
-#Ejemplo de Funcionamiento
+# Ejemplo de Funcionamiento
 
 
-![]()
+![Proyecto Final](https://github.com/MarioGauna/e-commerce-tecno/blob/master/src/image/Proyecto%20Final.gif)
 
 
 
-#Proyecto creado por:
+# Proyecto creado por:
 
 Mario Alberto Gauna
