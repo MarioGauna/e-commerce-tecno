@@ -10,6 +10,7 @@
 - [Bootstrap v5.1.3](https://getbootstrap.com/ "Heading link")
 - [react-multi-carousel v2.8.0](https://www.npmjs.com/package/react-multi-carousel "Heading link")
 - [react-router](https://www.npmjs.com/package/react-router "Heading link")
+- [react-bootstrap v2.2.1](https://react-bootstrap.github.io/ "Heading link")
 
 # Navegacion y componentes
 La navegación ocurre en todo momento utilizando el router de la librería react-router-dom

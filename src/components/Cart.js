@@ -1,11 +1,19 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import {Modal, Button} from "react-bootstrap";
 import { CartContext } from './CartContext';
 import { Link } from 'react-router-dom';
 import{serverTimestamp, setDoc, doc, collection, updateDoc, increment} from 'firebase/firestore';
 import db from "../utilidades/firebaseConfig";
 
 const Cart = () =>{
+
+    const cartTex=useContext(CartContext);
+    const [ordenID, setOrdenID] = useState();
+    const [list, setList] = useState([]);
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const crearOrden=()=>{
         let orden={
@@ -14,7 +22,7 @@ const Cart = () =>{
                 phone:"123456789",
                 email:"pepe@gmail.com"
             },
-            date:serverTimestamp(),
+            date: serverTimestamp(),
             items: cartTex.cartList.map((item)=>{
                 return{
                     id:item.id,
@@ -25,6 +33,7 @@ const Cart = () =>{
             }),
             total:cartTex.total(),
         }
+        setList([orden]);
 
         const addOrden= async()=>{
             const newOrden=doc(collection(db,"ordenes"));
@@ -34,7 +43,7 @@ const Cart = () =>{
     
         addOrden()
         .then((result)=> {
-            alert("Orden Creada: " + result.id); 
+            setOrdenID(result.id);
             cartTex.cartList.map(async(item)=>{
                 const itemRef=doc(db,"products", item.id);
                 await updateDoc(itemRef,{
@@ -45,8 +54,6 @@ const Cart = () =>{
         })
         .catch((error)=>console.log(error));
     };
-
-    const cartTex=useContext(CartContext);
 
     const borrarItem=(item)=>{
         cartTex.removeItem(item.id);
@@ -129,7 +136,7 @@ const Cart = () =>{
                             <span><strong>$ {cartTex.total()}</strong></span>
                             </li>
                         </ul>
-                        <button type="button" className="btn btn-primary btn-lg btn-block" onClick={crearOrden}>
+                        <button type="button" className="btn btn-primary btn-lg btn-block" onClick={()=>{handleShow();crearOrden();}}>
                             Comprar
                         </button>
                         </div>
@@ -139,6 +146,41 @@ const Cart = () =>{
                 <div className="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
                     <Link to="/"><p>Seguir comprando</p></Link>                  
                     <button type="button" className="btn btn-primary" onClick={limpiar} style={{visibility: ! cartTex.cartList.length ? 'hidden': 'visible'}}>Limpiar Carrito</button>
+
+
+                    <Modal show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
+                        <Modal.Header closeButton>
+                        <Modal.Title>Orden de Compra</Modal.Title>
+                        </Modal.Header>
+                            <Modal.Body>
+                                <p><b>Orden creada:</b> {ordenID}</p>
+                                {list.map((list) => {
+                                    return (
+                                    <ul key={list.key}>
+                                        <li>Usuario: {list.buyer.name}</li>
+                                        <li>Telefono: {list.buyer.phone}</li>
+                                        <li>Email: {list.buyer.email}</li>
+                                        <li>Orden: 
+                                        {list.items.map((items)=>{
+                                            return(
+                                                <ul key={list.items.key}>
+                                                    <li>Producto: {items.title}</li>
+                                                    <li>Precio Unitario: {items.cost}</li>
+                                                    <li>Cantidad: {items.qty}</li>
+                                                </ul>
+                                            )
+                                        })}
+                                        </li>
+                                        <li>Precio Total: {list.total}</li>
+                                    </ul>
+                                    )})}
+                            </Modal.Body>
+                                <Modal.Footer>
+                                <Button variant="primary" onClick={handleClose}>
+                                    Close
+                                </Button>
+                            </Modal.Footer>
+                    </Modal>
                 </div>
             </div>
         </section>
